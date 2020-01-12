@@ -15,15 +15,9 @@ let steve = {
             default: return this.default()
         }
     },
-    rainy: function() {
-        return 'coding'
-    },
-    sunny: function() {
-        return 'swimmimg'
-    },
-    default: function() {
-
-    }
+    rainy: () => 'rainiy',
+    sunny: () => 'swimming',
+    default: () => {}
 
 }
 console.log(steve.intro())
@@ -34,13 +28,12 @@ console.log(steve.mood('rainy')) // == 'coding'
 const factory = {
     manufacturer: 'Fjord',
     mechanic: function() {
-        let that = this
+        let that = this;
         return {
-            canFix: function(car) {
-                return car.manufacturer === that.manufacturer
-            }
+            canFix: (car) => car.manufacturer === that.manufacturer
         }
     }
+
 }
 
 const car = {manufacturer: 'Fjord'}
