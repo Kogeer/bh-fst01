@@ -1,12 +1,12 @@
 import {encode,decode} from '../secret/utils/index.js'
-import fs from 'fs'
+import {readFileSync,existsSync} from 'fs'
 
 
 export function encodeAll (...filesPath) {
     let textsObject = {};
     filesPath.forEach(filePath => {
-        if(fs.existsSync(filePath)) {
-            textsObject[filePath] = encode(fs.readFileSync(filePath).toString());
+        if(existsSync(filePath)) {
+            textsObject[filePath] = encode(readFileSync(filePath).toString());
         } else {
             textsObject[filePath] = '';
         }
@@ -17,8 +17,8 @@ export function encodeAll (...filesPath) {
 export function decodeAll (...filesPath) {
     let textsObject = {};
     filesPath.forEach(filePath => {
-        if(fs.existsSync(filePath)) {
-            textsObject[filePath] = decode(fs.readFileSync(filePath).toString());
+        if(existsSync(filePath)) {
+            textsObject[filePath] = decode(readFileSync(filePath).toString());
         } else {
             textsObject[filePath] = '';
         }
