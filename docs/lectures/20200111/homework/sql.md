@@ -14,13 +14,24 @@ Aki nem boldogul a tábla létrehozásával, annak a kész adatbázis: [sqlhw01]
 ## Írjunk lekérdezést a következő kérdések megválaszolására! (3 pont)
 
 1. Azoknak a színészeknek a nevei, akiket az 5. díjátadón jelöltek.
+> SELECT nominee,ceremony FROM awards WHERE ceremony = 5 AND category like '%Act%';
 
 1. Azoknak a színészeknek a nevei, akik az 5. díjátadón díjat is kaptak.
+> SELECT nominee,ceremony,win FROM awards WHERE ceremony = 5 AND win = "True" AND category like '%Act%';
 
 1. Az 1950-es években jelölt színészek nevei. Egy név csak egyszer szerepeljel az eredményben.
+> SELECT nominee,year_award,category FROM awards WHERE year_award = 1950 AND category like '%Act%' GROUP BY nominee;
 
 1. Azoknak az éveknek a listája, amikor Meryl Streep úgy nyert díjat, hogy a megelőző évben is jelölték, de akkor nem nyert.
 **Tipp**: ne féljük JOIN-t használni
+
+ > SELECT DISTINCT a.year_award, a.win, a.nominee FROM awards a
+   JOIN awards b
+   ON a.nominee = 'Meryl Streep'
+   AND a.win = 'True'
+   AND b.nominee = 'Meryl Streep'
+   AND b.year_award = a.year_award - 1
+   AND b.win = 'False';
 
 > például: ha Meryl Streepet 1960-ban jelölték, de nem nyert, majd 1961-ben is jelölték és akkor nyert, akkor 1961 benne lesz az eredményhalmazban
 
