@@ -3,6 +3,15 @@
 
 [előző alkalom](../20200118) [következő alkalom](../20200124)
 
+# Summary
+
+ - Megneztuk hogyan irjunk nodejs valtozot html templatebe
+ - megneztuk h mukodik egy mar az npmben levo ilyen templating system
+   - handlebars, npm package neve: express-handlebars
+ - ismerkedes fetch-el, aszinkron hivas
+ - ismerkedes a promise-sal
+   - fontos: harom allapot, pending, resolved (ha success), rejected (ha failed)
+
 # Ismétlés
 
 ...
@@ -132,6 +141,8 @@ A `ping.js` a hívás eredményét dolgozza fel: állítsa össze a `'ping-pong'
 
 Egy endpointja `GET /whoami`, amely a nevünket adja vissza,
 pl. Szűcs László.
+
+Konzolra írjuk ki a beérkező kérés összes fejléc sort!
 
 Egy másik endpointja a `GET /whois`, amely query string paraméterként vár egy ngrok ID-t
 
